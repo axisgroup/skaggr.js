@@ -1,0 +1,38 @@
+{
+  "name": "skaggr.js",
+  "version": "0.0.5",
+  "description": "A JavaScript interface for creating Qlik expressions via the skaggr spec",
+  "main": "dist/skaggr.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axisgroup/skaggr.js.git"
+  },
+  "keywords": [
+    "skaggr",
+    "qlik",
+    "qix"
+  ],
+  "author": "Speros Kokenes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/axisgroup/skaggr.js/issues"
+  },
+  "homepage": "https://github.com/axisgroup/skaggr.js#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "json-loader": "^0.5.4",
+    "skaggr-parse": "0.0.10",
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "skaggr-parse": "0.0.13"
+  }
+}
