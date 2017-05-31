@@ -6,20 +6,20 @@
 As the APIs bring the QIX Engine closer to web developers who have no experience with QV or QS, a new approach is needed for creating and managing Qlik expressions that matches how web developers write code. **skaggr.js** is a library that builds Qlik expressions via JavaScript classes and methods that allow web developers to compose and maintain these expressions programmatically. A couple of examples:
 
 #### Simple Example: Sum of Sales
-```
+```javascript
 var mySales = skaggr.Sum("Sales");
 mySales.print(); // -> "sum(Sales)"
 ```
 
 With a simple example like that, we haven't added much value. How is this any easier than writing "sum(Sales)"? It's not. However, as we scale up the syntax and want to modify our expressions over time, the interface becomes more useful. For example, lets add a total qualifier:
 
-```
+```javascript
 mySales.total();
 mySales.print(); // -> "sum(TOTAL Sales)"
 ```
 
 What if I then want to add modifiers to the total qualifier? I could redefine it on the fly easily like:
-```
+```javascript
 mySales.total(["Region", "Country"]);
 mySales.print(); // -> "sum(TOTAL<Region,Country> Sales)"
 
@@ -33,7 +33,7 @@ Let's try to produce a much more complicated expression:
 `sum({1 - $<Year = [Alt Year] - {2009,2010}, Month = P({1<Product = {Shoe}>} Month)>} TOTAL<Country,Region> Sales)`
 
 In this example, we have a complex set expression made up of multiple components, as well as total qualifiers. We can define this via skaggr.js like so:
-```
+```javascript
 // Init a sales expression with our total qualifier from before
 var mySales = skaggr.Sum("Sales")
     .total(["Country","Region"]);
@@ -83,7 +83,7 @@ mySales.print(); // -> "sum({1 - $<Year = [Alt Year] - {2009,2010}, Month = P({1
 ```
 
 While it is a lot to write, we are able to manage the various components of these expressions directly. For example, we could change the Year modifier to an Alt Year modifier simply by saying:
-```
+```javascript
 yearMod.field("[Alt Year]");
 mySales.print(); // -> "sum({1 - $<[Alt Year] = [Alt Year] - {2009,2010}, Month = P({1<Product = {Shoe}>} Month)>} TOTAL<Country,Region> Sales)"
 ```
